@@ -1,0 +1,29 @@
+FROM ghcr.io/dockhippie/steamcmd:latest-amd64@sha256:3a30183126e88b39a395714ef44797cfa2c71053e6804a3a0b55c5a3800a0db5
+
+VOLUME ["/var/lib/game", "/var/log/steam"]
+EXPOSE 10999 27017 8767
+
+WORKDIR /var/lib/game
+CMD ["/usr/bin/container"]
+
+RUN apt-get update -y && \
+  apt-get upgrade -y && \
+  apt-get install -y libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386 && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN mkdir -p /usr/share/game && \
+  chown -R steam:steam /usr/share/game && \
+  /usr/bin/steamcmd +login anonymous +force_install_dir /usr/share/game +app_update 343050 validate +quit && \
+  rm -rf /var/log/steam/*
+
+RUN apt-get update -y && \
+  apt-get install -y unzip && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+
+COPY ./overlay /
+
+RUN find /etc/container.d /etc/entrypoint.d -type f -name \*.sh -exec sed -i 's/\r$//' {} +; \
+  sed -i 's/\r$//' /usr/bin/container && \
+  chmod +x /usr/bin/container /etc/container.d/*.sh /etc/entrypoint.d/*.sh

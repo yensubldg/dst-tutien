@@ -1,0 +1,61 @@
+services:
+  master:
+    image: dst-server
+    container_name: dst-master-steamdeck
+    network_mode: host
+    environment:
+      DST_CLUSTER_TOKEN: "${DST_CLUSTER_TOKEN_MASTER}"
+      DST_NETWORK_CLUSTER_NAME: "Neverland - steamdeck"
+      DST_NETWORK_CLUSTER_DESCRIPTION: "Welcome to Neverland - steamdeck version"
+      DST_NETWORK_CLUSTER_PASSWORD: "haizz"
+      DST_GAMEPLAY_MAX_PLAYERS: "12"
+      DST_GAMEPLAY_GAME_MODE: "endless"
+      DST_NETWORK_SERVER_PORT: "11999"
+      DST_SHARD_ENABLED: "true"
+      DST_SHARD_IS_MASTER: "true"
+      DST_SHARD_NAME: "Master"
+      DST_SHARD_BIND_IP: "0.0.0.0"
+      DST_SHARD_MASTER_IP: "127.0.0.1"
+      DST_SHARD_MASTER_PORT: "11888"
+      DST_SHARD_CLUSTER_KEY: "neverland_cluster"
+      DST_SERVER_MOD_SETUP: "3624411781,1530801499,1803285852,666155465,375850593,374550642,1111658995,1780476441,1595631294,3235319974"
+    volumes:
+      - dst-master-data:/var/lib/game
+      - ./config/Master/modoverrides.lua:/etc/dst-config/Master/modoverrides.lua:ro
+      - ./config/Master/leveldataoverride.lua:/etc/dst-config/Master/leveldataoverride.lua:ro
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "grep", "-q", "shard_enabled = true", "/var/lib/game/server/general/cluster.ini" ]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  caves:
+    image: dst-server
+    container_name: dst-caves-steamdeck
+    network_mode: host
+    environment:
+      DST_CLUSTER_TOKEN: "${DST_CLUSTER_TOKEN_CAVES}"
+      DST_NETWORK_CLUSTER_NAME: "Neverland - steamdeck"
+      DST_NETWORK_SERVER_PORT: "11998"
+      DST_SHARD_ENABLED: "true"
+      DST_SHARD_IS_MASTER: "false"
+      DST_SHARD_NAME: "Caves"
+      DST_SHARD_BIND_IP: "0.0.0.0"
+      DST_SHARD_MASTER_IP: "127.0.0.1"
+      DST_SHARD_MASTER_PORT: "11888"
+      DST_SHARD_CLUSTER_KEY: "neverland_cluster"
+      DST_SERVER_MOD_SETUP: "3624411781,1530801499,1803285852,666155465,1207269058,375850593,380423963,374550642,1111658995,501385076,1852257480,1780476441,1595631294,3235319974"
+    volumes:
+      - dst-caves-data:/var/lib/game
+      - ./config/Caves/modoverrides.lua:/etc/dst-config/Caves/modoverrides.lua:ro
+      - ./config/Caves/leveldataoverride.lua:/etc/dst-config/Caves/leveldataoverride.lua:ro
+    depends_on:
+      master:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  dst-master-data:
+  dst-caves-data:

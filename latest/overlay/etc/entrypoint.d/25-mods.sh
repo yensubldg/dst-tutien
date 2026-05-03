@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+declare -x DST_MOD_OVERRIDES_RAW
+: "${DST_MOD_OVERRIDES_RAW:=""}"
+
+declare -x DST_SERVER_MOD_SETUP
+: "${DST_SERVER_MOD_SETUP:=""}"
+
+declare -x DST_SERVER_MOD_COLLECTION_SETUP
+: "${DST_SERVER_MOD_COLLECTION_SETUP:=""}"
+
+declare -x DST_FORCE_ENABLE_MODS
+: "${DST_FORCE_ENABLE_MODS:=""}"
+
+declare -x DST_ENABLE_MOD_ERROR
+: "${DST_ENABLE_MOD_ERROR:="false"}"
+
+declare -x DST_ENABLE_MOD_DEBUG_PRINT
+: "${DST_ENABLE_MOD_DEBUG_PRINT:="false"}"
