@@ -2,11 +2,11 @@ return {
   ["workshop-1111658995"]={ configuration_options={  }, enabled=true },
   ["workshop-1530801499"]={
     configuration_options={
-      ArrowsignEnable=false,
+      ArrowsignEnable=true,
       CountdownEnable=false,
-      HungerCost=1,
+      HungerCost=0,
       Ownership=true,
-      SanityCost=1 
+      SanityCost=0 
     },
     enabled=true 
   },
@@ -15,7 +15,7 @@ return {
       BundleItems=false,
       ChangeSkin=true,
       Digornot=false,
-      DragonflyChest=false,
+      DragonflyChest=true,
       Icebox=false,
       OnlyPlayer=false,
       SaltBox=false 
@@ -31,13 +31,13 @@ return {
       AutoPickupPoop=false,
       AutoPickupRange=10,
       AutoPickupSeeds=false,
-      AutoStackAsh=false,
+      AutoStackAsh=true,
       AutoStackEnabled=true,
       AutoStackMakeNewStackMainStack=true,
       AutoStackManuallyDroppedItems=false,
-      AutoStackPoop=false,
+      AutoStackPoop=true,
       AutoStackRange=10,
-      AutoStackSeeds=false,
+      AutoStackSeeds=true,
       AutoStackTwiggyTreeTwigs=false,
       ManualDropStackRange=5,
       ManualStackAsh=false,
@@ -46,7 +46,7 @@ return {
       ManualStackSeeds=false,
       PlayerMustHaveOneOfItemToAutoPickup=false,
       SmokePuffOnStacking=true,
-      StackDuringPopulation=false 
+      StackDuringPopulation=true 
     },
     enabled=true 
   },
@@ -92,5 +92,55 @@ return {
     },
     enabled=true 
   },
-  ["workshop-375850593"]={ configuration_options={  }, enabled=true } 
+  ["workshop-375850593"]={ configuration_options={  }, enabled=true },
+  ["workshop-380423963"]={
+    configuration_options={
+      [""]=0,
+      boulder_blue=1,
+      boulder_purple=1,
+      change_cave_loot=false,
+      common_loot_charcoal=0.011,
+      common_loot_flint=1,
+      common_loot_rocks=1,
+      cutlichen=0,
+      durian=0,
+      flintless_blue=1,
+      flintless_purple=1,
+      flintless_red=1,
+      foliage=0,
+      gears=0,
+      goldvein_purple=1,
+      goldvein_red=1,
+      guano=0,
+      ice=0,
+      lightbulb=0,
+      moon_green=1,
+      moon_orange=1,
+      moon_yellow=1,
+      pinecone=0,
+      rare_loot_bluegem=0.015,
+      rare_loot_marble=0.015,
+      rare_loot_redgem=0.015,
+      rottenegg=0,
+      seeds=0,
+      spoiled_food=0,
+      stalagmite_green=1,
+      stalagmite_orange=1,
+      stalagmite_yellow=1,
+      uncommon_loot_goldnugget=0.05,
+      uncommon_loot_mole=0.05,
+      uncommon_loot_nitre=0.05,
+      uncommon_loot_rabbit=0.05 
+    },
+    enabled=true 
+  },
+  ["workshop-501385076"]={
+    configuration_options={
+      quick_cook_on_fire=true,
+      quick_harvest=true,
+      quick_pick_cactus=true,
+      quick_pick_plant_normal_ground=true 
+    },
+    enabled=true 
+  } 
 }
