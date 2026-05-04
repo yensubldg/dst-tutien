@@ -5,7 +5,7 @@ services:
     network_mode: host
     environment:
       DST_CLUSTER_TOKEN: "${DST_CLUSTER_TOKEN_MASTER}"
-      DST_NETWORK_CLUSTER_NAME: "Neverland - Tu Tiên"
+      DST_NETWORK_CLUSTER_NAME: "Neverland - Tu Tiên new"
       DST_NETWORK_CLUSTER_DESCRIPTION: "Welcome to Neverland - Tu Tiên version"
       DST_NETWORK_CLUSTER_PASSWORD: "haizz"
       DST_GAMEPLAY_MAX_PLAYERS: "12"
