@@ -34,7 +34,7 @@ return {
       AutoStackAsh=true,
       AutoStackEnabled=true,
       AutoStackMakeNewStackMainStack=true,
-      AutoStackManuallyDroppedItems=false,
+      AutoStackManuallyDroppedItems=true,
       AutoStackPoop=true,
       AutoStackRange=10,
       AutoStackSeeds=true,
